@@ -50,8 +50,10 @@ const handleCalculate = (number) => {
 }
 
 const handlePercentage = (number) => {
-    if(number.slice(-1) === '/' || number.slice(-1) === '*' || number.slice(-1) === '+' || number.slice(-1) === '-'){
+    if(number.slice(-1) === '/' || number.slice(-1) === '*' || number.slice(-1) === '+' || number.slice(-1) === '-'||number.slice(-1) === '.'){
         return number.slice(0, -1) + '/100'
+    }else{
+        return number + '/100'
     }
 }
 
@@ -180,8 +182,8 @@ export const calculateNumber = (state = initialState, action) => {
             case PERSEN :
                 return{
                     ...state,
-                    number : handlePercentage(state.number),
-                    result : handleCalculate(handlePercentage(state.number))
+                    number :  handleOperator(state.number, '/100'),
+                    result : handleCalculate(handleOperator(state.number, '/100'))
                 }
         default: 
             return state
