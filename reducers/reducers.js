@@ -30,7 +30,7 @@ const initialState = {
 }
 
 const handleOperator = (number, operation) => {
-    if(number.slice(-1) === '/' || number.slice(-1) === '*' || number.slice(-1) === '+' || number.slice(-1) === '-'){
+    if(number.slice(-1) === '/' || number.slice(-1) === '*' || number.slice(-1) === '+' || number.slice(-1) === '-' ||number.slice(-1) === '.'){
         return number.slice(0, -1) + operation
     }else{
         return number + operation
@@ -42,7 +42,7 @@ const handleCalculate = (number) => {
         return 0
     }else if(number.slice(-1) === 0){
         return stringMath(0)
-    }else if(number.slice(-1) === '/' || number.slice(-1) === '*' || number.slice(-1) === '+' || number.slice(-1) === '-'){
+    }else if(number.slice(-1) === '/' || number.slice(-1) === '*' || number.slice(-1) === '+' || number.slice(-1) === '-' ||number.slice(-1) === '.'){
         return stringMath(number.slice(0, -1))
     } else{
         return stringMath(number)
